@@ -1,0 +1,19 @@
+.container{
+    width: 100%;
+    background: whitesmoke;
+
+    mat-toolbar{
+        margin: 0;
+        width: 92%;
+        max-width: 1250px;
+        margin: 0 auto;
+        color: #000000de;
+        padding: 50px 0;
+
+        i{
+            vertical-align: middle;
+            font-size: 40px;
+            margin-right: 8px;
+        }
+    }
+}

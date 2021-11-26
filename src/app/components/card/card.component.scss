@@ -1,0 +1,47 @@
+.main-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 25%;
+    padding: 40px 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+        button{
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .add-button{
+            background: #4BB543;
+            color: white;
+        }
+}
+
+.container{
+    width: 92%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+
+    .card {
+        width: 320px;
+        min-height: 285px;
+
+        mat-card-content{
+            p{
+                margin: 0 auto;
+                max-width: 95%;
+            }
+        }
+        
+        .control-buttons{
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+    }
+}

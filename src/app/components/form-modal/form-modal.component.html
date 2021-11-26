@@ -1,0 +1,28 @@
+<form class="cadastro-form" action="" [formGroup]="cadastroForm">
+    <h2>Cadastro de necessidade</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Escolha uma categoria</mat-label>
+        <mat-select formControlName="categoria">
+            <mat-option *ngFor="let item of arraySelects" value={{item.value}}>{{item.content}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="cadastroForm.controls['categoria'].hasError('required')">Este campo é obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input matInput placeholder="Título" formControlName="titulo">
+        <mat-error *ngIf="cadastroForm.controls['titulo'].hasError('required')">Este campo é obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição" formControlName="descricao">
+        <mat-error *ngIf="cadastroForm.controls['descricao'].hasError('required')">Este campo é obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+        <button mat-flat-button [mat-dialog-close]="true" cdkFocusInitial class="add-button" (click)="adicionarCard()">Adicionar</button>
+        <button mat-flat-button mat-dialog-close color="warn">Cancelar</button>
+    </mat-dialog-actions>
+</form>

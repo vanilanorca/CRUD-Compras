@@ -1,0 +1,21 @@
+// Formulário de cadastro de novo card
+.cadastro-form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 40px 0;
+    width: 80%;
+
+    h2{
+        text-align: center;
+    }
+
+    mat-form-field, button{
+        margin-top: 15px;
+    }
+
+    .add-button{
+        background: #4BB543;
+        color: white;
+    }
+}
