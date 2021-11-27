@@ -1,7 +1,8 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import {ErrorStateMatcher} from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-form-modal',
@@ -12,20 +13,30 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 export class FormModalComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<FormModalComponent>) { }
+  constructor(
+    public dialogRef: MatDialogRef<FormModalComponent>,
+    private http: HttpClient
+    ) { }
+
+  headers = new HttpHeaders ({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+  })
 
   ngOnInit(): void {
   }
 
   // formulario
   cadastroForm = new FormGroup({
-    categoria: new FormControl('', [Validators.required]),
+    // categoria: new FormControl('', [Validators.required]),
+    nome: new FormControl('', [Validators.required]),
     titulo: new FormControl('', [Validators.required]),
     descricao: new FormControl('', [Validators.required])    
   })
 
   selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
-
   selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
   nativeSelectFormControl = new FormControl('valid', [
@@ -35,23 +46,20 @@ export class FormModalComponent implements OnInit {
 
   // botao adicionar card
   adicionarCard(){
-    let categoria: string = this.cadastroForm.controls['categoria'].value;
-    let titulo: string = this.cadastroForm.controls['titulo'].value;
-    let descricao: string = this.cadastroForm.controls['descricao'].value;
 
-    let informacoesCard = {
-      categoria,
-      titulo,
-      descricao
-    }
-
-    this.dialogRef.close(informacoesCard)
+    // Salvar informacoes no DB.JSON
+    this.http.post<any>(`http://localhost:3000/informacoes/`, {
+      // categoria: this.cadastroForm.controls['categoria'].value,
+      nome: this.cadastroForm.controls['nome'].value,
+      titulo: this.cadastroForm.controls['titulo'].value,
+      descricao: this.cadastroForm.controls['descricao'].value,
+      // id: uuid();
+    }, {headers: this.headers}).subscribe(res => {
+      console.log(res)
+    })
   }
 
-  selects = {
-
-  }
-
+  // FORM SELECTS 
   arraySelects : any = [
     {value: 'mercado', content: 'Mercado'},
     {value: 'farmacia', content: 'Farmácia'},

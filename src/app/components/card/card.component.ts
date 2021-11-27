@@ -1,6 +1,7 @@
 import { FormModalComponent } from './../form-modal/form-modal.component';
 import { Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-card',
@@ -9,19 +10,26 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CardComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private http: HttpClient
+    ) {}
+
+  headers = new HttpHeaders ({
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+  })
 
   ngOnInit(): void {
+    this.http.get<any>(`http://localhost:3000/informacoes/`, {headers: this.headers}).subscribe(res => {
+      this.arr = res;
+    })
   }
-
-  cards: number[] = [];
 
   // array de informacoes de cards
-  arr : any[] = []
-
-  adicionarCard(): void {
-    this.cards.push(this.cards.length);
-  }
+  arr : any[] = [];
 
   openForm() {
     const dialogRef = this.dialog.open(FormModalComponent, {
@@ -29,15 +37,17 @@ export class CardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.arr.push(result);
-      }
+      this.http.get<any>(`http://localhost:3000/informacoes/`, {headers: this.headers}).subscribe(res => {
+        this.arr = res;
+      })
     });
   }
 
+  // TA DELETANDO MAS NAO DELETA DA TELA
   deletarCompra(item:any){
-    const index = this.arr.indexOf(item);
-    this.arr.splice(index, 1);
+    this.http.delete<any>(`http://localhost:3000/informacoes/${item.id}`, {headers: this.headers}).subscribe(res => {
+        this.arr = res
+        window.location.reload();
+    })
   }
-
 }

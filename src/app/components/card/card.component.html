@@ -1,25 +1,28 @@
 <mat-card-actions class="main-buttons">
-    <button mat-flat-button class="add-button" (click)="openForm()">Adicionar necessidade</button>
+    <button mat-flat-button class="add-button" (click)="openForm()">Adicionar comentário</button>
 </mat-card-actions>
 
 <div class="container">
     <div *ngFor="let item of arr">
         <mat-card class="card mat-elevation-z8">
-            <mat-card-subtitle>{{ item.categoria }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ item.nome }}</mat-card-subtitle>
             <mat-card-title>{{ item.titulo }}</mat-card-title>
             <mat-card-content>
                 <p>{{ item.descricao }}</p>
             </mat-card-content>
-            <mat-divider inset></mat-divider>
-            <mat-card-actions class="control-buttons">
-                <button mat-flat-button color="warn" class="delete" (click)="deletarCompra(item)">Deletar</button>
-            </mat-card-actions>
-            <mat-card-footer>
-                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-            </mat-card-footer>
+            <div class="footer">
+                <mat-divider inset></mat-divider>
+                <mat-card-actions class="control-buttons">
+                    <button mat-flat-button color="warn" class="delete" (click)="deletarCompra(item)">Deletar</button>
+                </mat-card-actions>
+                <mat-card-footer>
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </mat-card-footer>
+            </div>
         </mat-card>
     </div>
 </div>
+
 
 
 
