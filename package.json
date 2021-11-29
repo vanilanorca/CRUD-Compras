@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+  },
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +26,7 @@
     "@angular/router": "~13.0.0",
     "@types/file-saver": "^2.0.4",
     "@types/react-router": "^5.1.17",
+    "express": "^4.17.1",
     "f-ck": "^2.0.2",
     "file-saver": "^2.0.5",
     "rxjs": "~7.4.0",
