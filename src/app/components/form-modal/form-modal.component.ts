@@ -2,14 +2,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-form-modal',
   templateUrl: './form-modal.component.html',
   styleUrls: ['./form-modal.component.scss']
 })
-
 
 export class FormModalComponent implements OnInit {
 
@@ -27,6 +25,8 @@ export class FormModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
 
   // formulario
   cadastroForm = new FormGroup({
@@ -56,15 +56,20 @@ export class FormModalComponent implements OnInit {
       // id: uuid();
     }, {headers: this.headers}).subscribe(res => {
       console.log(res)
-    })
-  }
+    })  
 
-  // FORM SELECTS 
-  arraySelects : any = [
-    {value: 'mercado', content: 'Mercado'},
-    {value: 'farmacia', content: 'Farmácia'},
-    {value: 'outros', content: 'Outros'}
-  ];
+    }
+
+    // FORM SELECTS 
+    arraySelects : any = [
+      {value: 'mercado', content: 'Mercado'},
+      {value: 'farmacia', content: 'Farmácia'},
+      {value: 'outros', content: 'Outros'}
+    ];
+
+
+  // 
+  
   
 }
 

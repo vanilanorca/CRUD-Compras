@@ -22,6 +22,12 @@ export class CardComponent implements OnInit {
   'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   })
 
+  // FILTRAGEM DE PALAVRAS
+  reEscape = (s:any) => s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+  badWords = ["ANUS", "BABA-OVO", "BABAOVO", "BABACA", "BACURA", "BAGOS", "BAITOLA", "BEBUM", "BESTA", "BICHA", "BISCA", "BIXA", "BOAZUDA", "BUCETA", "BOCO", "BOIOLA", "BOLAGATO", "BOQUETE", "BOLCAT", "BOSSETA", "BOSTA", "BOSTANA", "BRECHA", "BREXA", "BRIOCO", "BRONHA", "BUCA", "BUNDA", "BUNDUDA", "BURRA", "BURRO", "CACHORRA", "CACHORRO", "CADELA", "CAGA", "CAGADO", "CAGAO", "CAGONA", "CANALHA", "CARALHO", "CASSETA", "CASSETE", "CHECHECA", "CHERECA", "CHIBUMBA", "CHIBUMBO", "CHIFRUDA", "CHIFRUDO", "CHOTA", "CHOCHOTA", "CHUPADA", "CHUPADO", "VIADO", "BIXA", "PAU"];
+  badWordsRE = new RegExp(this.badWords.map(this.reEscape).join('|'));
+  
   ngOnInit(): void {
     this.http.get<any>(`http://localhost:3000/informacoes/`, {headers: this.headers}).subscribe(res => {
       this.arr = res;
@@ -50,4 +56,7 @@ export class CardComponent implements OnInit {
         window.location.reload();
     })
   }
+
+
+  
 }

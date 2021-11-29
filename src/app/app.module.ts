@@ -18,6 +18,7 @@ import { FormModalComponent } from './components/form-modal/form-modal.component
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { BadWordsPipe } from './bad-words.pipe';
 
 
 
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     CardComponent,
-    FormModalComponent
+    FormModalComponent,
+    BadWordsPipe
   ],
   imports: [
     BrowserModule,
