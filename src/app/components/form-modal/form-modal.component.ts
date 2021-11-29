@@ -48,7 +48,7 @@ export class FormModalComponent implements OnInit {
   adicionarCard(){
 
     // Salvar informacoes no DB.JSON
-    this.http.post<any>(`https://crud-comentary.herokuapp.com:8080/informacoes/`, {
+    this.http.post<any>(`https://crud-commentary-data.herokuapp.com/informacoes/`, {
       // categoria: this.cadastroForm.controls['categoria'].value,
       nome: this.cadastroForm.controls['nome'].value,
       titulo: this.cadastroForm.controls['titulo'].value,
