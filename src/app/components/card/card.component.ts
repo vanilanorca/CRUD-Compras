@@ -29,7 +29,7 @@ export class CardComponent implements OnInit {
   badWordsRE = new RegExp(this.badWords.map(this.reEscape).join('|'));
   
   ngOnInit(): void {
-    this.http.get<any>(`https://crud-comentary.herokuapp.com/informacoes/`, {headers: this.headers}).subscribe(res => {
+    this.http.get<any>(`https://crud-comentary.herkuapp.com/informacoes/`, {headers: this.headers}).subscribe(res => {
       this.arr = res;
     })
   }
