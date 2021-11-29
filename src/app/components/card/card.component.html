@@ -5,7 +5,7 @@
 <div class="container">
     <div *ngFor="let item of arr">
         <mat-card class="card mat-elevation-z8">
-            <mat-card-subtitle>{{ item.nome | badWords }}</mat-card-subtitle>
+            <mat-card-subtitle class="capitalize-text">{{ item.nome | badWords }}</mat-card-subtitle>
             <mat-card-title>{{ item.titulo | badWords }}</mat-card-title>
             <mat-card-content>
                 <p>{{ item.descricao | badWords }}</p>

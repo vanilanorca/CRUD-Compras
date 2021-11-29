@@ -32,6 +32,10 @@
         min-height: 285px;
         position: relative;
 
+        .capitalize-text{
+            text-transform: capitalize;
+        }
+
         mat-card-content{
             p{
                 margin: 0 auto;
