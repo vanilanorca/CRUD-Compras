@@ -29,7 +29,7 @@ export class CardComponent implements OnInit {
   badWordsRE = new RegExp(this.badWords.map(this.reEscape).join('|'));
   
   ngOnInit(): void {
-    this.http.get<any>(`http://localhost:3000/informacoes/`, {headers: this.headers}).subscribe(res => {
+    this.http.get<any>(`https://crud-comentary.herokuapp.com/informacoes/`, {headers: this.headers}).subscribe(res => {
       this.arr = res;
     })
   }
@@ -43,7 +43,7 @@ export class CardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.http.get<any>(`http://localhost:3000/informacoes/`, {headers: this.headers}).subscribe(res => {
+      this.http.get<any>(`https://crud-comentary.herokuapp.com/informacoes/`, {headers: this.headers}).subscribe(res => {
         this.arr = res;
       })
     });
@@ -51,7 +51,7 @@ export class CardComponent implements OnInit {
 
   // TA DELETANDO MAS NAO DELETA DA TELA
   deletarCompra(item:any){
-    this.http.delete<any>(`http://localhost:3000/informacoes/${item.id}`, {headers: this.headers}).subscribe(res => {
+    this.http.delete<any>(`https://crud-comentary.herokuapp.com/informacoes/${item.id}`, {headers: this.headers}).subscribe(res => {
         this.arr = res
         window.location.reload();
     })
